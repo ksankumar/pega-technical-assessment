@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -13,7 +13,7 @@
     "roboto-fontface": "*",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "vuetify": "^2.0.0"
+    "vuetify": "^2.0.19"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

@@ -1,17 +1,16 @@
 <template>
-  <v-container>
-    <v-layout
-      text-center
-      wrap
-    >
-      <v-flex xs12>
-        <v-img
-          :src="require('../assets/logo.png')"
-          class="my-3"
-          contain
-          height="200"
-        ></v-img>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-row
+    justify="center"
+    align="center"
+  >
+    <v-flex xs12 class="headline text-center">CosmosOperator</v-flex>
+    <v-flex xs12>
+      <v-img
+        :src="require('../assets/logo.png')"
+        class="my-3"
+        contain
+        height="100"
+      ></v-img>
+    </v-flex>
+  </v-row>
 </template>

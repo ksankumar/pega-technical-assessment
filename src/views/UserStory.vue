@@ -3,7 +3,7 @@
     justify="center"
     align="center"
   >
-    <v-flex xs12 class="headline text-center">Applications</v-flex>
+    <v-flex xs12 class="headline text-center">User Story</v-flex>
     <v-flex xs12>
       <v-img
         :src="require('../assets/logo.png')"
