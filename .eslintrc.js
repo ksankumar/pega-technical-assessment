@@ -7,8 +7,13 @@ module.exports = {
     'plugin:vue/essential',
     '@vue/standard'
   ],
+  'globals': {
+    'fetch': true
+  },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-tabs': 0,
+    'indent': 'off',
+    'no-useless-escape': 'error',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },
   parserOptions: {
