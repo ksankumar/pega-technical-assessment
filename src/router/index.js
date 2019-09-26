@@ -10,19 +10,57 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+  routes: [{
+    path: '/',
+    name: 'home',
+    component: Home
+  }, {
+    path: '/about',
+    name: 'about',
+    component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+  }, {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import(/* webpackChunkName: "dashboard" */ './views/Dashboard.vue')
+  }, {
+    path: '/spaces',
+    name: 'Spaces',
+    component: () => import(/* webpackChunkName: "spaces" */ './views/Spaces.vue')
+  }, {
+    path: '/documents',
+    name: 'Documents',
+    component: () => import(/* webpackChunkName: "documents" */ './views/Documents.vue')
+  }, {
+    path: '/bugs',
+    name: 'Bugs',
+    component: () => import(/* webpackChunkName: "about" */ './views/Bugs.vue')
+  }, {
+    path: '/epics',
+    name: 'Epics',
+    component: () => import(/* webpackChunkName: "epics" */ './views/Epics.vue')
+  }, {
+    path: '/goals',
+    name: 'Goals',
+    component: () => import(/* webpackChunkName: "goals" */ './views/Goals.vue')
+  }, {
+    path: '/notifications',
+    name: 'Notifications',
+    component: () => import(/* webpackChunkName: "about" */ './views/Notifications.vue')
+  }, {
+    path: '/my-applications',
+    name: 'MyApplications',
+    component: () => import(/* webpackChunkName: "my-applications" */ './views/MyApplications.vue')
+  }, {
+    path: '/about',
+    name: 'about',
+    component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+  }, {
+    path: '/cosmos-operator',
+    name: 'CosmosOperator',
+    component: () => import(/* webpackChunkName: "about" */ './views/CosmosOperator.vue')
+  }, {
+    path: '/about',
+    name: 'about',
+    component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+  }]
 })

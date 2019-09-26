@@ -5,7 +5,7 @@
         <span>Pega</span>
       </v-toolbar-title>
     </v-app-bar>
-
+    <LeftMenu/>
     <v-content>
       <router-view/>
     </v-content>
@@ -13,10 +13,19 @@
 </template>
 
 <script>
+  import LeftMenu from './components/LeftMenu'
 
   export default {
     name: 'App',
+    components: {
+      LeftMenu
+    },
     data: () => ({
+      items: [
+        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+        { title: 'Photos', icon: 'mdi-image' },
+        { title: 'About', icon: 'mdi-help-box' }
+      ]
     })
   }
 </script>
