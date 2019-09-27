@@ -1,7 +1,7 @@
 <template>
   <!--  <v-card height="400" max-width="256">-->
   <v-navigation-drawer permanent app expand-on-hover dark
-                       mini-variant>
+                       mini-variant role="navigation" aria-label="Pega options">
     <v-text-field
       flat
       hide-details
@@ -11,13 +11,22 @@
       prepend-inner-icon="mdi-magnify"
       placeholder="Search"
       class="hidden-sm-and-down"
+      role="search"
+      aria-haspopup="true"
+      aria-label="Search box"
+      tabindex="0"
     ></v-text-field>
     <v-divider></v-divider>
-    <v-list dense nav shaped>
-      <v-list-item-group color="primary">
+    <v-list dense nav shaped role="none">
+      <v-list-item-group color="primary" role="none">
         <template v-for="(item, index) in items">
-          <v-divider color="white" v-if="item.divider" :key="index"/>
-          <v-list-group v-else-if="item.child" :key="index+'g'" :prepend-icon="item.icon" no-action>
+          <v-divider color="white" v-if="item.divider" :key="index" role="none"/>
+          <v-list-group v-else-if="item.child" :key="index+'g'" :prepend-icon="item.icon" no-action
+                        role="menuitem"
+                        aria-haspopup="true"
+                        :aria-label="'create'+item.title"
+                        aria-expanded="false"
+                        tabindex="-1">
             <template v-slot:activator>
               <v-list-item-content>
                 <v-list-item-title>{{item.title}}</v-list-item-title>
@@ -30,7 +39,12 @@
               </v-list-item-icon>
             </v-list-item>
           </v-list-group>
-          <v-list-item v-else :key="item.title" link :to="{name: `${item.page}`}">
+          <v-list-item v-else :key="item.title" link :to="{name: `${item.page}`}"
+                       role="menuitem"
+                       aria-haspopup="true"
+                       aria-label="item.title"
+                       aria-expanded="false"
+                       tabindex="-1">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -42,7 +56,11 @@
       </v-list-item-group>
     </v-list>
     <template v-slot:append>
-      <v-list>
+      <v-list role="menuitem"
+              aria-haspopup="true"
+              :aria-label="navFooter.title"
+              aria-expanded="false"
+              tabindex="-1">
         <v-list-item :to="{name: `${navFooter.page}`}">
           <v-list-item-avatar>
             <v-avatar color="teal" size="32">
@@ -82,16 +100,6 @@
         { title: 'Recent', page: 'Recent', icon: 'mdi-history' }
       ],
       navFooter: { title: 'Cosmos Operator', page: 'CosmosOperator' }
-    }),
-    created () {
-    },
-    computed: {},
-    mounted () {
-    },
-    methods: {}
+    })
   }
 </script>
-
-<style scoped>
-
-</style>
