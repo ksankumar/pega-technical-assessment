@@ -35,9 +35,17 @@ export default new Router({
     name: 'Bugs',
     component: () => import(/* webpackChunkName: "bugs" */ '../views/Bugs.vue')
   }, {
+    path: '/bug',
+    name: 'Bug',
+    component: () => import(/* webpackChunkName: "bug" */ '../views/Bugs.vue')
+  }, {
     path: '/epics',
     name: 'Epics',
     component: () => import(/* webpackChunkName: "epics" */ '../views/Epics.vue')
+  }, {
+    path: '/epic',
+    name: 'Epic',
+    component: () => import(/* webpackChunkName: "epic" */ '../views/Epics.vue')
   }, {
     path: '/user-story',
     name: 'UserStory',

@@ -56,10 +56,10 @@
                        aria-expanded="false"
                        tabindex="-1">
             <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon color="white">{{ item.icon }}</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title class="white--text">{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </template>
@@ -93,8 +93,8 @@
         title: 'Create',
         icon: 'mdi-plus',
         child: [
-          { 'title': 'Bug', page: 'Bugs', icon: 'mdi-bug-outline' },
-          { 'title': 'Epic', page: 'Epics', icon: 'mdi-gamepad' },
+          { 'title': 'Bug', page: 'Bug', icon: 'mdi-bug-outline' },
+          { 'title': 'Epic', page: 'Epic', icon: 'mdi-gamepad' },
           { 'title': 'User Story', page: 'UserStory', icon: 'mdi-account-card-details-outline' }
         ]
       },

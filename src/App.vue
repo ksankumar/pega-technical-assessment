@@ -34,6 +34,17 @@
   }
 </script>
 <style>
+  body {
+    scroll-behavior: smooth !important;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+    webkit-app-region: no-drag;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .fade-enter-active,
   .fade-leave-active {
     transition-duration: 0.3s;
