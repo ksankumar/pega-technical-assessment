@@ -1,12 +1,14 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Pega</span>
+    <v-app-bar app dense>
+      <v-app-bar-nav-icon v-if="$vuetify.breakpoint.smAndDown" @click="showNavBar=!showNavBar"/>
+      <v-toolbar-title class="headline d-flex">
+        <span class="font-weight-light">Pega</span>
+        <img :src="require('../src/assets/logo.png')" alt="pega-logo" width="80">
       </v-toolbar-title>
     </v-app-bar>
-    <LeftMenu/>
-    <v-content>'
+    <LeftMenu :navMenu.sync="showNavBar"/>
+    <v-content>
       <v-container class="fill-height">
         <transition name="fade" mode="out-in">
           <router-view/>
@@ -25,11 +27,7 @@
       LeftMenu
     },
     data: () => ({
-      items: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Photos', icon: 'mdi-image' },
-        { title: 'About', icon: 'mdi-help-box' }
-      ]
+      showNavBar: false
     })
   }
 </script>

@@ -1,70 +1,72 @@
 <template>
-  <v-navigation-drawer permanent app expand-on-hover
-                       dark
+  <v-navigation-drawer app :expand-on-hover="$vuetify.breakpoint.smAndUp"
+                       :permanent="$vuetify.breakpoint.smAndUp"
+                       v-model="showNavMenu"
                        :mini-variant.sync="miniVarient"
+                       dark
                        role="navigation"
                        aria-label="Pega options">
-    <div class="py-3">
-      <v-avatar v-if="miniVarient" size="57" class="ml-3" color="white">
-        <v-avatar color="#424242" size="56">
-          <v-icon>mdi-magnify</v-icon>
+    <template v-slot:prepend>
+      <div class="ma-3">
+        <v-avatar v-if="miniVarient" size="57" color="white">
+          <v-avatar color="#424242" size="56">
+            <v-icon>mdi-magnify</v-icon>
+          </v-avatar>
         </v-avatar>
-      </v-avatar>
-      <v-text-field
-        v-else
-        flat
-        height="50"
-        hide-details
-        outlined
-        rounded
-        prepend-inner-icon="mdi-magnify"
-        placeholder="Search"
-        class="hidden-sm-and-down"
-        role="search"
-        aria-haspopup="true"
-        aria-label="Search box"
-        tabindex="0"
-      ></v-text-field>
-    </div>
-    <v-divider></v-divider>
-    <v-list dense nav shaped role="none">
-      <v-list-item-group color="primary" role="none">
-        <template v-for="(item, index) in items">
-          <v-divider color="white" v-if="item.divider" :key="index" role="none"/>
-          <v-list-group v-else-if="item.child" :key="index+'g'" :prepend-icon="item.icon" no-action
-                        role="menuitem"
-                        aria-haspopup="true"
-                        :aria-label="'create'+item.title"
-                        aria-expanded="false"
-                        tabindex="-1">
-            <template v-slot:activator>
-              <v-list-item-content>
-                <v-list-item-title>{{item.title}}</v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item v-for="(child, i) in item.child" :key="i+'s'" :to="{name: `${child.page}`}">
-              <v-list-item-content v-text="child.title"></v-list-item-content>
+        <v-text-field
+          v-else
+          flat
+          hide-details
+          outlined
+          rounded
+          prepend-inner-icon="mdi-magnify"
+          placeholder="Search"
+          role="search"
+          aria-haspopup="true"
+          aria-label="Search box"
+          tabindex="0"
+        ></v-text-field>
+      </div>
+      <v-divider></v-divider>
+      <v-list dense nav shaped role="none">
+        <v-list-item-group color="primary" role="none">
+          <template v-for="(item, index) in items">
+            <v-divider color="white" v-if="item.divider" :key="index" role="none"/>
+            <v-list-group v-else-if="item.child" :key="index+'g'" :prepend-icon="item.icon" no-action
+                          role="menuitem"
+                          aria-haspopup="true"
+                          :aria-label="'create'+item.title"
+                          aria-expanded="false"
+                          tabindex="-1">
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>{{item.title}}</v-list-item-title>
+                </v-list-item-content>
+              </template>
+              <v-list-item v-for="(child, i) in item.child" :key="i+'s'" :to="{name: `${child.page}`}">
+                <v-list-item-content v-text="child.title"></v-list-item-content>
+                <v-list-item-icon>
+                  <v-icon v-text="child.icon"></v-icon>
+                </v-list-item-icon>
+              </v-list-item>
+            </v-list-group>
+            <v-list-item v-else :key="item.title" link :to="{name: `${item.page}`}"
+                         role="menuitem"
+                         aria-haspopup="true"
+                         aria-label="item.title"
+                         aria-expanded="false"
+                         tabindex="-1">
               <v-list-item-icon>
-                <v-icon v-text="child.icon"></v-icon>
+                <v-icon color="white">{{ item.icon }}</v-icon>
               </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="white--text">{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
             </v-list-item>
-          </v-list-group>
-          <v-list-item v-else :key="item.title" link :to="{name: `${item.page}`}"
-                       role="menuitem"
-                       aria-haspopup="true"
-                       aria-label="item.title"
-                       aria-expanded="false"
-                       tabindex="-1">
-            <v-list-item-icon>
-              <v-icon color="white">{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title class="white--text">{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
-      </v-list-item-group>
-    </v-list>
+          </template>
+        </v-list-item-group>
+      </v-list>
+    </template>
     <template v-slot:append>
       <v-list role="menuitem"
               aria-haspopup="true"
@@ -112,9 +114,23 @@
       ],
       navFooter: { title: 'Cosmos Operator', page: 'CosmosOperator' }
     }),
-    watch: {
-      miniVarient (v) {
-        console.log(v)
+    props: {
+      navMenu: {
+        type: Boolean,
+        default: false
+      }
+    },
+    created () {
+      this.miniVarient = this.$vuetify.breakpoint.smAndUp
+    },
+    computed: {
+      showNavMenu: {
+        get () {
+          return this.navMenu
+        },
+        set (value) {
+          this.$emit('update:navMenu', value)
+        }
       }
     }
   }
