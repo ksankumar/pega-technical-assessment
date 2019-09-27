@@ -1,21 +1,31 @@
 <template>
-  <!--  <v-card height="400" max-width="256">-->
-  <v-navigation-drawer permanent app expand-on-hover dark
-                       mini-variant role="navigation" aria-label="Pega options">
-    <v-text-field
-      flat
-      hide-details
-      outlined
-      rounded
-      dense
-      prepend-inner-icon="mdi-magnify"
-      placeholder="Search"
-      class="hidden-sm-and-down"
-      role="search"
-      aria-haspopup="true"
-      aria-label="Search box"
-      tabindex="0"
-    ></v-text-field>
+  <v-navigation-drawer permanent app expand-on-hover
+                       dark
+                       :mini-variant.sync="miniVarient"
+                       role="navigation"
+                       aria-label="Pega options">
+    <div class="py-3">
+      <v-avatar v-if="miniVarient" size="57" class="ml-3" color="white">
+        <v-avatar color="#424242" size="56">
+          <v-icon>mdi-magnify</v-icon>
+        </v-avatar>
+      </v-avatar>
+      <v-text-field
+        v-else
+        flat
+        height="50"
+        hide-details
+        outlined
+        rounded
+        prepend-inner-icon="mdi-magnify"
+        placeholder="Search"
+        class="hidden-sm-and-down"
+        role="search"
+        aria-haspopup="true"
+        aria-label="Search box"
+        tabindex="0"
+      ></v-text-field>
+    </div>
     <v-divider></v-divider>
     <v-list dense nav shaped role="none">
       <v-list-item-group color="primary" role="none">
@@ -78,6 +88,7 @@
   export default {
     name: 'LeftMenu',
     data: () => ({
+      miniVarient: true,
       items: [{
         title: 'Create',
         icon: 'mdi-plus',
@@ -100,6 +111,11 @@
         { title: 'Recent', page: 'Recent', icon: 'mdi-history' }
       ],
       navFooter: { title: 'Cosmos Operator', page: 'CosmosOperator' }
-    })
+    }),
+    watch: {
+      miniVarient (v) {
+        console.log(v)
+      }
+    }
   }
 </script>
