@@ -40,13 +40,13 @@
                         tabindex="-1">
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title>{{item.title}}</v-list-item-title>
+                <v-list-item-title class="white--text">{{item.title}}</v-list-item-title>
               </v-list-item-content>
             </template>
             <v-list-item v-for="(child, i) in item.child" :key="i+'s'" :to="{name: `${child.page}`}">
-              <v-list-item-content v-text="child.title"></v-list-item-content>
+              <v-list-item-content class="white--text" v-text="child.title"></v-list-item-content>
               <v-list-item-icon>
-                <v-icon v-text="child.icon"></v-icon>
+                <v-icon color="white" v-text="child.icon"></v-icon>
               </v-list-item-icon>
             </v-list-item>
           </v-list-group>
@@ -69,11 +69,14 @@
     <!--    </template>-->
     <template v-slot:append>
       <v-list role="menuitem"
+              color="#1e2655"
+              flat
               aria-haspopup="true"
               :aria-label="navFooter.title"
               aria-expanded="false"
-              tabindex="-1">
-        <v-list-item :to="{name: `${navFooter.page}`}">
+              tabindex="-1"
+              class="elevation-12 py-0">
+        <v-list-item :to="{name: `${navFooter.page}`}" >
           <v-list-item-avatar>
             <v-avatar color="teal" size="32">
               <span class="white--text headline">{{navFooter.title.charAt(0)}}</span>
