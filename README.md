@@ -33,9 +33,6 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run serve
-
-# run unit tests
-npm run test:unit
 ```
 
 ## App is running on localhost:8080
